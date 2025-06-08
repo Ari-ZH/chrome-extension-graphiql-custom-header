@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "GraphiQL Custom Header Extension",
+  "version": "1.0.0",
+  "description": "A Chrome extension to add custom headers to GraphiQL requests",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "GraphiQL CH"
+  },
+  "icons": {
+    "16": "icons/graphql16.png",
+    "48": "icons/graphql48.png",
+    "128": "icons/graphql128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "injectScript.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GraphiQL CH</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+    <div class="container">
+        <form id="configForm" class="config-form">
+            <div class="form-group">
+                <label for="configName">🏷️ 配置名称:</label>
+                <input type="text" id="configName" placeholder="输入配置名称">
+            </div>
+
+            <div class="form-group">
+                <label for="loginUrl">🔗 登录地址（必填）:</label>
+                <input type="text" id="loginUrl" placeholder="如: https://your-website.com/login*" required>
+                <!-- <small>💡 支持完整URL或Chrome Extension match格式。完整URL会自动添加*通配符</small> -->
+            </div>
+
+            <div class="form-group">
+                <label for="graphqlEndpoint">🌐 GraphQL网关地址（必填）:</label>
+                <input type="text" id="graphqlEndpoint" placeholder="如: https://your-api.com/graphql" required>
+                <!-- <small>🔧 GraphQL服务的完整URL地址</small> -->
+            </div>
+
+            <div class="form-group">
+                <label>🔄 缓存-请求头映射:</label>
+                <div id="mappingContainer">
+                    <div class="mapping-item">
+                        <input type="text" class="cache-key" placeholder="缓存key">
+                        <input type="text" class="header-key" placeholder="请求头key">
+                        <button type="button" class="remove-mapping">删除</button>
+                    </div>
+                </div>
+                <button type="button" id="addMapping" class="add-mapping-btn">➕ 新增映射</button>
+            </div>
+
+            <button type="submit" class="save-btn">💾 保存配置</button>
+        </form>
+        <div class="saved-configs">
+            <h3>📋 已保存的配置</h3>
+            <div class="config-list-container">
+                <div id="configList"></div>
+            </div>
+            <div class="config-actions-bar">
+                <button type="button" id="importConfigBtn" class="import-config-btn">📁 导入配置</button>
+            </div>
+            <button type="button" id="clearCacheBtn" class="clear-cache-btn">🗑️</button>
+        </div>
+    </div>
+
+    <!-- 导入配置模态框 -->
+    <div id="importModal" class="import-modal">
+        <div class="import-modal-content">
+            <h3>📁 导入配置</h3>
+            <div class="form-group">
+                <label for="importTextarea">请粘贴配置JSON文本:</label>
+                <textarea id="importTextarea" placeholder='请粘贴配置JSON，例如:
+{
+  "name": "示例配置",
+  "loginUrl": "https://your-website.com/login",
+  "graphqlEndpoint": "https://your-api.com/graphql",
+  "mappings": [
+    {
+      "cacheKey": "token",
+      "headerKey": "Authorization"
+    }
+  ]
+}'></textarea>
+            </div>
+            <div class="button-group">
+                <button type="button" id="importCancelBtn" class="import-cancel-btn">取消</button>
+                <button type="button" id="importConfirmBtn" class="import-confirm-btn">确认导入</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>
