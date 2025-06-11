@@ -78,13 +78,13 @@ async function registerScriptForConfig(config) {
     if (!isValidMatchPattern(loginUrl)) {
       console.warn('Invalid match pattern, using fallback:', loginUrl);
       // 提取域名部分，创建更宽泛的匹配
-      try {
-        const url = new URL(config.loginUrl || config.matchPattern);
-        loginUrl = `${url.protocol}//${url.hostname}/*`;
-      } catch (e) {
-        console.error('Failed to parse URL, using <all_urls>');
-        loginUrl = '<all_urls>';
-      }
+      // try {
+      //   const url = new URL(config.loginUrl || config.matchPattern);
+      //   loginUrl = `${url.protocol}//${url.hostname}/*`;
+      // } catch (e) {
+      //   console.error('Failed to parse URL, using <all_urls>');
+      //   loginUrl = '<all_urls>';
+      // }
     }
 
     console.log('Registering script for:', {
