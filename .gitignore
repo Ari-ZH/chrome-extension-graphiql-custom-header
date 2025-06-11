@@ -42,3 +42,4 @@ yarn.lock
 *.tmp
 *.temp
 config.local.*
+extension.zip

@@ -36,7 +36,7 @@ function openLogin(config: Config) {
     })
     .then((tab: chrome.tabs.Tab) => {
       console.log('New tab created for login:', tab);
-      // close();
+      close();
     });
 }
 
