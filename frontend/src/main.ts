@@ -2,8 +2,9 @@ import { GraphiQL } from 'graphiql';
 import ReactDOM from 'react-dom/client';
 import React from 'react';
 import { explorerPlugin } from '@graphiql/plugin-explorer';
+import { HISTORY_PLUGIN } from '@graphiql/plugin-history';
 import { createGraphiQLFetcher } from '@graphiql/toolkit';
-import 'graphiql/graphiql.css';
+import 'graphiql/style.css';
 import '@graphiql/plugin-explorer/style.css';
 import './App.css';
 
@@ -176,7 +177,7 @@ async function init(params: InitParams) {
     React.createElement(GraphiQL, {
       fetcher,
       defaultEditorToolsVisibility: true,
-      plugins: [expPlugin],
+      plugins: [HISTORY_PLUGIN, expPlugin],
     })
   );
 }
