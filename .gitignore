@@ -43,3 +43,4 @@ yarn.lock
 *.temp
 config.local.*
 extension.zip
+monacoeditorwork
